@@ -30,8 +30,11 @@ let selectedKey = items.find(item => item.key === location.pathname)?.key || '/'
 
   return (
     <div className={styles.navbar}>
-      <div className={styles.logo}>
-        <img src={logo} alt="Логотип" className={styles.logoImage} />
+  <div className={styles.logo}>
+  <span className={styles.logoText}>LOGO</span>
+</div>
+
+
         <span className={styles.logoText}>Performance Review</span>
       </div>
 

@@ -1,0 +1,19 @@
+# dependencies
+/node_modules
+
+# vite build
+/dist
+/.vite
+
+# environment variables
+*.env
+*.env.local
+*.env.*.local
+
+# editor
+.idea
+.vscode
+*.log
+
+# build artifacts
+*.cache

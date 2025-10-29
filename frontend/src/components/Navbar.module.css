@@ -1,0 +1,69 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 64px;
+  background-color: #141414; /* тёмный фон как в Ant Design Dark */
+  color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logoImage {
+  height: 40px;
+  width: 80px;
+  object-fit: contain;
+}
+
+.logoText {
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 10px;
+  color: #fff;
+}
+
+.menu {
+  flex: 1;
+  margin: 0 20px;
+}
+
+/* Принудительно делаем меню тёмным */
+:global(.ant-menu) {
+  background-color: #141414 !important;
+  color: #fff !important;
+  border-bottom: none !important;
+}
+
+:global(.ant-menu-item) {
+  color: #ccc !important;
+}
+
+:global(.ant-menu-item:hover) {
+  background-color: #1f1f1f !important;
+  color: #fff !important;
+}
+
+:global(.ant-menu-item-selected) {
+  background-color: #333 !important;
+  color: #fff !important;
+}
+
+.userSection {
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+.userSection .ant-avatar {
+  background-color: #555;
+}
+
+.userSection span {
+  color: #fff;
+  margin-left: 8px;
+}

@@ -14,6 +14,12 @@
   align-items: center;
 }
 
+.logoText {
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+}
+
 .logoImage {
   height: 40px;
   width: 80px;

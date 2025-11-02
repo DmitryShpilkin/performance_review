@@ -22,6 +22,21 @@
   align-items: center;
 }
 
+<<<<<<< HEAD
+=======
+.logoText {
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.logoImage {
+  height: 40px;
+  width: 80px;
+  object-fit: contain;
+}
+
+>>>>>>> 59831ea8408348ba6d4dc043b210d710343906d3
 .logoText {
   font-size: 18px;
   font-weight: bold;

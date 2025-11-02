@@ -38,11 +38,20 @@ const Navbar = () => {
 
   return (
     <div className={styles.navbar}>
+<<<<<<< HEAD
       {/* =========================
           ЛОГОТИП
           ========================= */}
       <div className={styles.logo}>
         <span className={styles.logoText}>LOGO Performance Review</span>
+=======
+  <div className={styles.logo}>
+  <span className={styles.logoText}>LOGO</span>
+</div>
+
+
+        <span className={styles.logoText}>Performance Review</span>
+>>>>>>> 59831ea8408348ba6d4dc043b210d710343906d3
       </div>
 
       {/* =========================

@@ -1,0 +1,225 @@
+/* =========================
+   ОСНОВНОЙ КОНТЕЙНЕР
+   ========================= */
+.dashboardPage {
+  background-color: #1f1f1f;
+  /* Тёмный фон страницы */
+  min-height: 100vh;
+  /* На всю высоту окна */
+  padding: 20px;
+  color: white;
+  /* Основной цвет текста */
+}
+
+/* =========================
+   КАРТОЧКИ (ANT DESIGN Card)
+   ========================= */
+.card {
+  background-color: #2a2a2a !important;
+  /* Фон карточек чуть светлее основного */
+  color: white !important;
+  /* Цвет текста */
+  margin-bottom: 20px;
+  /* Отступ между карточками */
+  border: 1px solid #333 !important;
+  /* Лёгкая рамка для отделения */
+  border-radius: 10px !important;
+}
+
+/* Заголовки карточек (title) */
+.card .ant-card-head-title {
+  color: white !important;
+  /* Белый текст заголовков карточек */
+  font-weight: 600;
+}
+
+/* =========================
+   ТЕКСТ
+   ========================= */
+.whiteText {
+  color: white !important;
+  /* Принудительно белый текст */
+}
+
+/* =========================
+   МОДАЛЬНОЕ ОКНО
+   ========================= */
+
+:global(.ant-modal-content) {
+  background-color: #2a2a2a !important;
+  color: white !important;
+}
+
+:global(.ant-modal-header) {
+  background-color: #2a2a2a !important;
+  border-bottom: 1px solid #444 !important;
+}
+
+:global(.ant-modal-title) {
+  color: white !important;
+}
+
+:global(.ant-modal-body) {
+  color: white !important;
+}
+
+/* Сделать крест закрытия модального окна белым */
+:global(.ant-modal-close) {
+  color: white !important;
+}
+
+/* При наведении курсора */
+:global(.ant-modal-close:hover) {
+  color: #ccc !important;
+}
+
+/* Таблица внутри модального окна */
+:global(.ant-table) {
+  background-color: #2a2a2a !important;
+  color: white !important;
+}
+
+:global(.ant-table-thead > tr > th) {
+  background-color: #333 !important;
+  color: white !important;
+  border-bottom: 1px solid #444 !important;
+}
+
+:global(.ant-table-tbody > tr > td) {
+  background-color: #2a2a2a !important;
+  color: white !important;
+  border-bottom: 1px solid #444 !important;
+}
+
+:global(.ant-table-tbody > tr:hover > td) {
+  background-color: #383838 !important;
+}
+
+:global(.ant-progress-text) {
+  color: white !important;
+}
+ 
+.darkTableRow {
+  background-color: #2a2a2a !important;
+  color: white !important;
+}
+.darkTableRow:hover {
+  background-color: #383838 !important;
+}
+
+
+
+/* =========================
+   Progress на странице
+   ========================= */
+.ant-progress-inner {
+  background-color: #555 !important;
+}
+
+.ant-progress-text {
+  color: white !important;
+}
+
+
+/* =========================
+   ТАБЛИЦЫ (ANT Design Table)
+   ========================= */
+.darkTable .ant-table {
+  background-color: #2a2a2a !important;
+  color: white !important;
+}
+
+.darkTable .ant-table-thead>tr>th {
+  background-color: #333 !important;
+  /* Фон заголовков таблицы */
+  color: white !important;
+  /* Белый текст в шапке */
+  border-bottom: 1px solid #444 !important;
+}
+
+.darkTable .ant-table-tbody>tr>td {
+  background-color: #2a2a2a !important;
+  color: white !important;
+  border-bottom: 1px solid #444 !important;
+}
+
+/* Ховер по строке таблицы */
+.darkTable .ant-table-tbody>tr:hover>td {
+  background-color: #383838 !important;
+}
+
+/* =========================
+   ПРОГРЕСС-БАРЫ (Progress)
+   ========================= */
+.ant-progress-inner {
+  background-color: #555 !important;
+  /* Цвет фона прогресса */
+}
+
+.ant-progress-text {
+  color: white !important;
+  /* Цвет чисел (например, “70%”) */
+}
+
+/* =========================
+   СТАТИСТИКА (Statistic)
+   ========================= */
+.ant-statistic {
+  color: white !important;
+}
+
+.ant-statistic-title {
+  color: white !important;
+  /* Названия вроде “Всего целей” */
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.ant-statistic-content {
+  color: white !important;
+  /* Сами цифры */
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* =========================
+   ГРАФИК (Recharts)
+   ========================= */
+.recharts-wrapper {
+  background-color: transparent !important;
+}
+
+.recharts-cartesian-axis-tick-value {
+  fill: white !important;
+  /* Подписи осей графика */
+}
+
+.recharts-tooltip-wrapper {
+  color: white !important;
+}
+
+/* =========================
+   СКРОЛЛЫ И МЕЛОЧИ
+   ========================= */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #555;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #777;
+}
+
+:global(.ant-modal-root) {
+  position: relative !important;
+  z-index: 1000 !important;
+}
+
+:global(.ant-modal-mask) {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(4px);
+}

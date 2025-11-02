@@ -1,0 +1,116 @@
+/* =========================
+   КОНТЕЙНЕР СТРАНИЦЫ
+   ========================= */
+.pageContainer {
+  min-height: 100vh;
+  padding: 0 220px;
+  background-color: #1f1f1f; /* Тёмный фон страницы */
+  color: white; /* Основной текст белый */
+  font-family: Arial, sans-serif;
+}
+
+/* Заголовок страницы */
+.pageTitle {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* =========================
+   СЕКЦИИ
+   ========================= */
+.section {
+  margin-bottom: 10px;
+  border: 1px solid #333;
+  border-radius: 8px;
+  background-color: #2a2a2a;
+  overflow: hidden;
+}
+
+/* Кнопка раскрытия секции */
+.toggleBtn {
+  width: 100%;
+  text-align: left;
+  padding: 10px 15px;
+  background-color: #333;
+  color: white;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.toggleBtn:hover {
+  background-color: #444;
+}
+
+/* Контент секции с плавной анимацией */
+.sectionContent {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0 15px;
+}
+
+.sectionContent.open {
+  max-height: 1000px;
+  padding: 10px 15px;
+}
+
+/* =========================
+   SELECT (выбор роли и др.)
+   ========================= */
+:global(.ant-select) {
+  color: white !important;
+  background-color: #333 !important;
+  border-radius: 6px;
+  width: 200px; /* фиксированная ширина */
+}
+
+/* Селектор (выбранный элемент) */
+:global(.ant-select-selector) {
+  background-color: #333 !important;
+  color: white !important;
+}
+
+/* Текст выбранного элемента */
+:global(.ant-select-selection-item) {
+  color: white !important;
+}
+
+/* Список опций */
+:global(.ant-select-item-option) {
+  background-color: #2a2a2a !important;
+  color: white !important;
+}
+
+/* Опция при наведении */
+:global(.ant-select-item-option-active) {
+  background-color: #444 !important;
+  color: white !important;
+}
+
+/* Выбранная опция */
+:global(.ant-select-item-option-selected) {
+  background-color: #555 !important;
+  color: white !important;
+}
+
+/* =========================
+   ПОЛЬЗОВАТЕЛЬСКАЯ СЕКЦИЯ
+   ========================= */
+.userSection {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  gap: 10px;
+}
+
+.userSection .ant-avatar {
+  background-color: #555;
+}
+
+.userSection span {
+  color: #fff;
+  margin-left: 8px;
+}

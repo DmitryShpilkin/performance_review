@@ -50,23 +50,23 @@ function DashboardPage() {
   /*
   const [teamGoals, setTeamGoals] = useState([]);
   const [sampleData, setSampleData] = useState([]);
-
+  
   useEffect(() => {
-    fetch('/api/goals') // Запрос к твоему API
-      .then(res => res.json())
-      .then(data => {
-        setTeamGoals(data.teamGoals);
-        setSampleData(data.progressData);
-      })
-      .catch(err => console.error('Ошибка загрузки данных:', err));
+  fetch('/api/goals') // Запрос к твоему API
+  .then(res => res.json())
+  .then(data => {
+  setTeamGoals(data.teamGoals);
+  setSampleData(data.progressData);
+  })
+  .catch(err => console.error('Ошибка загрузки данных:', err));
   }, []);
   */
 
   // Цвет прогресса в зависимости от процента
   const getColor = (percent) => {
-    if (percent < 50) return '#ff4d4f';   // красный
-    if (percent < 80) return '#faad14';   // жёлтый
-    return '#52c41a';                     // зелёный
+    if (percent < 50) return '#ff4d4f'; // красный
+    if (percent < 80) return '#faad14'; // жёлтый
+    return '#52c41a'; // зелёный
   };
 
   // Колонки таблицы в модальном окне
@@ -179,31 +179,27 @@ function DashboardPage() {
       </Card>
 
       {/* Модальное окно с деталями по цели */}
-<Modal
-  title={<span style={{ color: 'white' }}>{selectedGoal?.name}</span>}
-  open={!!selectedGoal}
-  footer={null}
-  onCancel={() => setSelectedGoal(null)}
-  bodyStyle={{ backgroundColor: '#2a2a2a', color: 'white' }}
-  style={{ top: 20 }}
->
-  {selectedGoal && (
-    <Table
-      dataSource={selectedGoal.details}
-      columns={columns}
-      pagination={false}
-      rowKey="employee"
-      style={{ color: 'white', backgroundColor: '#2a2a2a' }}
-      rowClassName={() => 'darkTableRow'}
-    />
-  )}
-</Modal>
-
-
-
+      <Modal
+        title={<span style={{ color: 'white' }}>{selectedGoal?.name}</span>}
+        open={!!selectedGoal}
+        footer={null}
+        onCancel={() => setSelectedGoal(null)}
+        bodyStyle={{ backgroundColor: '#2a2a2a', color: 'white' }}
+        style={{ top: 20 }}
+      >
+        {selectedGoal && (
+          <Table
+            dataSource={selectedGoal.details}
+            columns={columns}
+            pagination={false}
+            rowKey="employee"
+            style={{ color: 'white', backgroundColor: '#2a2a2a' }}
+            rowClassName={() => 'darkTableRow'}
+          />
+        )}
+      </Modal>
     </div>
   );
 }
 
-/* ====================== ЭКСПОРТ КОМПОНЕНТА ====================== */
 export default DashboardPage;

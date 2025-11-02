@@ -18,5 +18,6 @@
 # build artifacts
 *.cache
 
-/frontend/src/assets/wink_tv.svg
+.DS_Store
+
 

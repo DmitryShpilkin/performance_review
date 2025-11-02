@@ -1,20 +1,30 @@
 /* =========================
+   ГЛОБАЛЬНЫЕ СТИЛИ
+   ========================= */
+* {
+  background-color: #2a2a2a;
+  /* общий тёмный фон */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #eee;
+  /* светлый текст по умолчанию */
+}
+
+/* =========================
    КОНТЕЙНЕР СТРАНИЦЫ
    ========================= */
-   *{
-    background-color: #2a2a2a;
-    margin: 0;
-    padding: 0;
-   }
-
 .container {
-  min-height: 100vh; /* на всю высоту окна */
-  max-width: 1200px; /* максимальная ширина страницы */
-  margin: 20px auto; /* центрируем по горизонтали */
+  min-height: 100vh;
+  /* на всю высоту окна */
+  max-width: 1200px;
+  /* максимальная ширина страницы */
+  margin: 20px auto;
+  /* центрируем по горизонтали */
   padding: 20px;
   font-family: Arial, sans-serif;
-  background-color: #1e1e1e; /* тёмный фон */
-  color: #eee; /* светлый основной текст */
+  background-color: #1e1e1e;
+  /* основной фон страницы */
   transition: background-color 0.3s, color 0.3s;
 }
 
@@ -27,7 +37,8 @@ h1 {
 /* Примечание под заголовком */
 .note {
   text-align: center;
-  color: #aaa; /* слегка светлый серый */
+  color: #aaa;
+  /* светло-серый текст */
   margin-bottom: 20px;
 }
 
@@ -35,50 +46,68 @@ h1 {
    БЛОК ЦЕЛИ
    ========================= */
 .goalBlock {
-  border: 1px solid #333; /* тёмная рамка */
+  border: 1px solid #333;
+  /* тёмная рамка */
   border-radius: 8px;
   padding: 15px;
   margin-bottom: 20px;
-  background-color: #2a2a2a; /* чуть светлее фона страницы */
+  background-color: #2a2a2a;
+  /* чуть светлее фона страницы */
   opacity: 1;
   transform: translateY(0);
   transition: opacity 0.3s, transform 0.3s;
 }
 
 /* Анимация появления и удаления цели */
-.goalBlock.adding { 
-  opacity: 0; 
-  transform: translateY(-20px); 
+.goalBlock.adding {
+  opacity: 0;
+  transform: translateY(-20px);
 }
-.goalBlock.removing { 
-  opacity: 0; 
-  transform: translateY(-20px); 
+
+.goalBlock.removing {
+  opacity: 0;
+  transform: translateY(-20px);
 }
 
 /* =========================
    ШАПКА ЦЕЛИ
    ========================= */
-.goalHeader { 
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
-  margin-bottom: 10px; 
+.goalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 /* Поле ввода названия цели */
 .goalNameInput {
   flex-grow: 1;
+  /* занимает всё доступное пространство */
   padding: 8px;
   font-size: 16px;
   border-radius: 4px;
   border: 1px solid #555;
   margin-right: 10px;
-  background-color: #3a3a3a; /* тёмный фон поля */
-  color: #eee; /* светлый текст */
+  background-color: #3a3a3a;
+  /* тёмный фон поля */
+  color: #eee;
+  /* светлый текст */
+}
+
+/* Кнопка удаления цели */
+.removeBtn {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #b22222;
+  /* красная кнопка */
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
 }
 
 /* =========================
-   TEXTAREA ДЛЯ СРОКОВ И РЕЗУЛЬТАТОВ
+   TEXTAREA ДЛЯ СРОКОВ, РЕЗУЛЬТАТОВ И ЗАДАЧ
    ========================= */
 textarea {
   width: 100%;
@@ -107,9 +136,18 @@ textarea {
   transition: opacity 0.3s, transform 0.3s;
 }
 
-.taskRow.adding { opacity: 0; transform: translateY(-20px); }
-.taskRow.removing { opacity: 0; transform: translateY(-20px); }
+/* Анимация появления/удаления задачи */
+.taskRow.adding {
+  opacity: 0;
+  transform: translateY(-20px);
+}
 
+.taskRow.removing {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+/* Лейбл задачи */
 .taskRow span {
   width: 70px;
   font-weight: bold;
@@ -117,12 +155,50 @@ textarea {
   flex-shrink: 0;
 }
 
-.addGoalBtn {
+/* =========================
+   КНОПКИ
+   ========================= */
+.addGoalBtn,
+.saveGoalBtn {
   margin-top: 5px;
-  padding: 5px 10px;
+  padding: 8px 15px;
   border-radius: 4px;
   border: none;
   cursor: pointer;
-  background-color: blue;
-  color: #f5f5f5;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+/* Кнопка добавления цели */
+.addGoalBtn {
+  background-color: #1e90ff;
+  /* синий */
+  color: #fff;
+}
+
+.addGoalBtn:hover {
+  background-color: #1c86ee;
+}
+
+/* Кнопка сохранения целей */
+.saveGoalBtn {
+  background-color: #32cd32;
+  /* зелёный */
+  color: #fff;
+  margin-left: 10px;
+}
+
+.saveGoalBtn:hover {
+  background-color: #2eb82e;
+}
+
+/* =========================
+   СПЕЦИАЛЬНЫЕ ПРАВИЛА
+   ========================= */
+button:focus,
+textarea:focus,
+input:focus {
+  outline: none;
+  border-color: #1e90ff;
+  /* синий контур при фокусе */
 }

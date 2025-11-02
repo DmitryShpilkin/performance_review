@@ -1,12 +1,82 @@
-.goalBlock {
-  border: 1px solid #555;
-  padding: 10px;
-  margin-bottom: 15px;
-  border-radius: 8px;
+/* =========================
+   ГЛОБАЛЬНЫЕ СБРОСЫ И ФОН
+   ========================= */
+
+/* Сбрасываем margin и padding, используем box-sizing border-box для всех элементов */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   background-color: #2a2a2a;
-  transition: all 0.3s ease;
+  /* базовый фон для всей страницы */
 }
 
+/* Основной контейнер приложения */
+.container {
+  min-height: 100vh;
+  /* занимает весь экран по высоте */
+  max-width: 1200px;
+  /* ограничиваем ширину */
+  margin: 20px auto;
+  /* центрирование по горизонтали */
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #1e1e1e;
+  /* тёмный фон контейнера */
+  color: #eee;
+  /* светлый текст */
+  transition: background-color 0.3s, color 0.3s;
+  /* плавный переход при смене темы */
+}
+
+/* Заголовок страницы */
+h1 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Примечание под заголовком */
+.note {
+  text-align: center;
+  color: #aaa;
+  /* слегка светлый серый текст */
+  margin-bottom: 20px;
+}
+
+/* =========================
+   БЛОК ЦЕЛИ
+   ========================= */
+
+/* Контейнер отдельной цели */
+.goalBlock {
+  border: 1px solid #333;
+  /* рамка вокруг цели */
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: #2a2a2a;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s, transform 0.3s;
+  /* плавное появление и исчезновение */
+}
+
+/* Анимации добавления/удаления цели */
+.goalBlock.adding {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.goalBlock.removing {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+/* =========================
+   ШАПКА ЦЕЛИ
+   ========================= */
+
+/* Шапка цели: название + кнопки */
 .goalHeader {
   display: flex;
   justify-content: space-between;
@@ -14,31 +84,90 @@
   margin-bottom: 10px;
 }
 
+/* Поле ввода названия цели */
 .goalNameInput {
-  width: 70%;
-  padding: 5px;
+  flex-grow: 1;
+  /* занимает всё доступное пространство */
+  padding: 8px;
+  font-size: 16px;
   border-radius: 4px;
-  border: 1px solid #888;
-  background-color: #1e1e1e;
-  color: #f5f5f5;
+  border: 1px solid #555;
+  margin-right: 10px;
+  background-color: #3a3a3a;
+  color: #eee;
 }
+
+/* =========================
+   TEXTAREA ДЛЯ СРОКОВ И РЕЗУЛЬТАТОВ
+   ========================= */
+
+textarea {
+  width: 100%;
+  min-height: 60px;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  border: 1px solid #555;
+  resize: vertical;
+  /* можно изменять высоту */
+  font-size: 14px;
+  background-color: #3a3a3a;
+  color: #eee;
+}
+
+/* =========================
+   СТРОКА ЗАДАЧИ
+   ========================= */
 
 .taskRow {
-  margin-bottom: 8px;
-  padding: 5px;
-  border: 1px dashed #888;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  /* расстояние между элементами */
+  margin-bottom: 10px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s, transform 0.3s;
 }
 
-.goalNameInput{
-  margin-top: 5px;
-  padding: 5px 10px;
+/* Анимации для задач */
+.taskRow.adding {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.taskRow.removing {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+/* Нумерация/подпись задачи */
+.taskRow span {
+  width: 70px;
+  font-weight: bold;
+  margin-top: 8px;
+  flex-shrink: 0;
+  /* не сжимается */
+}
+
+/* =========================
+   КНОПКИ
+   ========================= */
+
+/* Кнопка добавления цели */
+.addGoalBtn {
+  margin-top: 10px;
+  padding: 5px 12px;
   border-radius: 4px;
   border: none;
   cursor: pointer;
-  background-color: #1613dd;
+  background-color: #1e88e5;
   color: #f5f5f5;
 }
-.addTaskBtn{
+
+/* Кнопка добавления задачи */
+.addTaskBtn {
   margin-top: 5px;
   padding: 5px 10px;
   border-radius: 4px;
@@ -48,27 +177,36 @@
   color: #f5f5f5;
 }
 
-.removeBtn{
+/* Кнопка удаления */
+.removeBtn {
   margin-top: 5px;
   padding: 5px 10px;
   border-radius: 4px;
   border: none;
   cursor: pointer;
-  background-color: red;
+  background-color: #e53935;
   color: #f5f5f5;
 }
+
+/* =========================
+   АНИМАЦИИ
+   ========================= */
+
+/* Общая анимация добавления */
 .adding {
   opacity: 0;
   transform: scale(0.95);
   animation: fadeIn 0.2s forwards;
 }
 
+/* Общая анимация удаления */
 .removing {
   opacity: 1;
   transform: scale(1);
   animation: fadeOut 0.3s forwards;
 }
 
+/* Появление */
 @keyframes fadeIn {
   to {
     opacity: 1;
@@ -76,6 +214,7 @@
   }
 }
 
+/* Исчезновение */
 @keyframes fadeOut {
   to {
     opacity: 0;

@@ -20,7 +20,8 @@ a {
 }
 
 /* Антовские компоненты */
-.ant-menu, .ant-card {
+.ant-menu,
+.ant-card {
   background-color: #fff;
   color: #000;
 }

@@ -1,23 +1,25 @@
+/* =========================
+   ОБЩИЙ СТИЛЬ НАВБАРА
+   ========================= */
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
   height: 64px;
-  background-color: #141414; /* тёмный фон как в Ant Design Dark */
+  background-color: #141414;
+  /* тёмный фон */
   color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  /* лёгкая тень */
 }
 
+/* =========================
+   ЛОГОТИП
+   ========================= */
 .logo {
   display: flex;
   align-items: center;
-}
-
-.logoImage {
-  height: 40px;
-  width: 80px;
-  object-fit: contain;
 }
 
 .logoText {
@@ -27,12 +29,15 @@
   color: #fff;
 }
 
+/* =========================
+   ГОРИЗОНТАЛНОЕ МЕНЮ
+   ========================= */
 .menu {
   flex: 1;
   margin: 0 20px;
 }
 
-/* Принудительно делаем меню тёмным */
+/* Принудительно делаем меню Ant Design тёмным */
 :global(.ant-menu) {
   background-color: #141414 !important;
   color: #fff !important;
@@ -53,17 +58,90 @@
   color: #fff !important;
 }
 
-.userSection {
-  display: flex;
-  align-items: center;
-  color: #fff;
-}
-
-.userSection .ant-avatar {
-  background-color: #555;
-}
-
+/* =========================
+   СЕКЦИЯ ПОЛЬЗОВАТЕЛЯ
+   ========================= */
 .userSection span {
-  color: #fff;
-  margin-left: 8px;
+  color: #fff !important;
+}
+
+/* Селектор роли (Ant Design Select) */
+:global(.roleSelect .ant-select-selector) {
+  background-color: #333 !important;
+  color: #fff !important;
+  border: 1px solid #555 !important;
+  box-shadow: none !important;
+  width: 160px !important;
+}
+
+/* Текст выбранного элемента */
+:global(.roleSelect .ant-select-selection-item) {
+  color: #fff !important;
+}
+
+/* Placeholder */
+:global(.roleSelect .ant-select-selection-placeholder) {
+  color: #aaa !important;
+}
+
+/* Стрелка */
+:global(.roleSelect .ant-select-arrow) {
+  color: #fff !important;
+}
+
+/* Dropdown (портал) */
+:global(.ant-select-dropdown) {
+  background-color: #333 !important;
+  color: #fff !important;
+}
+
+/* Элементы dropdown */
+:global(.ant-select-item-option-content) {
+  color: #fff !important;
+}
+
+/* Выбранный / активный элемент */
+:global(.ant-select-item-option-selected),
+:global(.ant-select-item-option-active) {
+  background-color: #555 !important;
+  color: #fff !important;
+}
+
+/* Фокус */
+:global(.roleSelect.ant-select-focused .ant-select-selector) {
+  border-color: #555 !important;
+  box-shadow: none !important;
+}
+
+/* =========================
+   АДАПТИВНОСТЬ: Мобильные
+   ========================= */
+@media (max-width: 768px) {
+  .menuWrapper {
+    display: none;
+    /* скрываем десктопное меню */
+  }
+
+  .roleSelect {
+    display: none;
+    /* скрываем селектор роли */
+  }
+
+  .userSection Text {
+    display: none;
+    /* скрываем имя пользователя */
+  }
+
+  .mobileMenuButton {
+    display: inline-flex;
+    /* показываем бургер-меню */
+    color: #fff;
+    background: none;
+    border: none;
+  }
+}
+
+/* По умолчанию бургер-меню скрыто на десктопе */
+.mobileMenuButton {
+  display: none;
 }

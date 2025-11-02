@@ -1,0 +1,71 @@
+// Настройки подключения к базе данных.
+// provider = "sqlite" → база будет локально храниться в .db файле
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL") // берём путь к файлу БД из .env
+}
+
+// Указываем, что нужно генерировать Prisma Client
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Таблица пользователей
+model User {
+  id       String @id @default(uuid()) // уникальный идентификатор (UUID)
+  name     String                      // имя пользователя
+  email    String @unique              // email — обязательный и уникальный
+  password String                      // храним хеш пароля, не сам пароль
+  role     String @default("employee") // роль: "employee" или "manager" / "admin"
+
+// Связи (реляции) — это не физические поля, а логические связи таблиц
+
+  reviewerReviews Review[] @relation("ReviewerReviews")
+  // массив отзывов, где этот пользователь — автор отзыва (reviewer)
+
+  revieweeReviews Review[] @relation("RevieweeReviews")
+  // массив отзывов, где на этого пользователя написан отзыв (reviewee)
+
+  goals           Goal[] // цели пользователя
+}
+
+// Таблица целей
+model Goal {
+  id       String  @id @default(uuid()) // уникальный идентификатор цели
+  name     String                        // название цели
+  deadline String?                       // срок выполнения (опционально)
+  results  String?                       // ожидаемые результаты (опционально)
+  userId   String                        // FK на User
+
+  // Необязательные задачи, которые могут быть вложены внутрь Goal (как JSON)
+  tasks    Json?
+
+  // Связь с таблицей User
+  user    User     @relation(fields: [userId], references: [id])
+
+  // Обратная связь с таблицей Review
+  reviews Review[]
+}
+
+// Таблица отзывов (перфоманс-ревью)
+model Review {
+  id         String   @id @default(uuid()) // уникальный идентификатор отзыва
+
+  reviewerId String // FK — кто оставил отзыв
+  revieweeId String // FK — кому оставили отзыв
+
+  goalId     String? // FK к Goal (может быть пустым, если отзыв общий)
+
+  type       String  // тип (например: "mid-year", "end-year", "peer")
+  content    String  // содержимое отзыва
+  rating     Int?    // оценка (опционально)
+  createdAt  DateTime @default(now())  // дата создания
+  updatedAt  DateTime @updatedAt        // автообновление при изменении записи
+
+  // связи к User с указанием ролей
+  reviewer User @relation("ReviewerReviews", fields: [reviewerId], references: [id])
+  reviewee User @relation("RevieweeReviews", fields: [revieweeId], references: [id])
+
+  // связь к Goal (опциональная)
+  goal Goal? @relation(fields: [goalId], references: [id])
+}

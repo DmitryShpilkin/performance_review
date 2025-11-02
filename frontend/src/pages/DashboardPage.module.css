@@ -98,11 +98,12 @@
 :global(.ant-progress-text) {
   color: white !important;
 }
- 
+
 .darkTableRow {
   background-color: #2a2a2a !important;
   color: white !important;
 }
+
 .darkTableRow:hover {
   background-color: #383838 !important;
 }

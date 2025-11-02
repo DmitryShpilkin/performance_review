@@ -15,60 +15,70 @@ const ResultsPage = ({ responses }) => {
   // =========================
   // Состояния страницы
   // =========================
-  const [totalScore, setTotalScore] = useState(0); // суммарный балл
-  const [rating, setRating] = useState(''); // рейтинг по результатам
-  const [recommendation, setRecommendation] = useState(''); // текст рекомендации
-  const [managerComment, setManagerComment] = useState(''); // комментарий руководителя
-  const [managerRating, setManagerRating] = useState(0); // рейтинг руководителя
+  const [totalScore, setTotalScore] = useState(0); // суммарный балл пользователя, инициализируется нулём
+  const [rating, setRating] = useState(''); // текущий рейтинг (Высокий/Средний/Низкий), изначально пустой
+  const [recommendation, setRecommendation] = useState(''); // текстовая рекомендация на основе рейтинга, изначально пустая
+  const [managerComment, setManagerComment] = useState(''); // комментарий от руководителя, изначально пустой
+  const [managerRating, setManagerRating] = useState(0); // рейтинг, выставленный руководителем (0–10), изначально 0
 
   // =========================
-  // Подсчет баллов на основе ответов
+  // Подсчёт баллов на основе ответов
   // =========================
   const calculateScore = () => {
-    let score = 0;
+    let score = 0; // инициализация счётчика баллов
 
     // =========================
     // Тестовые данные, если responses пустой
+    // Используется для демонстрации интерфейса при отсутствии реальных данных
     // =========================
-    const demoResponses = responses?.length ? responses : [
-      { q1: 5, q2: 4, q3: 3 },
-      { q1: 4, q2: 3, q3: 5 }
-    ];
+    const demoResponses = responses?.length
+      ? responses // если responses есть и не пустой — используем его
+      : [ // иначе — берём демо-данные
+        { q1: 5, q2: 4, q3: 3 },
+        { q1: 4, q2: 3, q3: 5 }
+      ];
 
+    // Проходим по каждому ответу в демо-данных
     demoResponses.forEach(resp => {
+      // Для каждого ключа (q1, q2 и т. д.) в объекте ответа
       for (const key in resp) {
-        if (typeof resp[key] === 'number') score += resp[key]; // суммируем числовые ответы
+        // Если значение по ключу — число, добавляем его к общему счёту
+        if (typeof resp[key] === 'number') score += resp[key];
       }
     });
 
+    // Устанавливаем общий балл в состояние
     setTotalScore(score);
 
-    // Определяем рейтинг и рекомендации
+    // Определяем рейтинг и соответствующую рекомендацию на основе балла
     if (score >= 25) {
-      setRating('Высокий');
-      setRecommendation(recommendationsMap.high);
+      setRating('Высокий'); // рейтинг «Высокий» при балле 25+
+      setRecommendation(recommendationsMap.high); // берём рекомендацию из карты для высокого уровня
     } else if (score >= 15) {
-      setRating('Средний');
-      setRecommendation(recommendationsMap.medium);
+      setRating('Средний'); // рейтинг «Средний» при балле от 15 до 24
+      setRecommendation(recommendationsMap.medium); // рекомендация для среднего уровня
     } else {
-      setRating('Низкий');
-      setRecommendation(recommendationsMap.low);
+      setRating('Низкий'); // рейтинг «Низкий» при балле менее 15
+      setRecommendation(recommendationsMap.low); // рекомендация для низкого уровня
     }
   };
 
   // =========================
   // Вычисляем результаты при изменении responses
+  // useEffect срабатывает при первом рендере и при каждом изменении prop `responses`
   // =========================
   useEffect(() => {
-    calculateScore();
-  }, [responses]);
+    calculateScore(); // вызываем расчёт баллов
+  }, [responses]); // зависимость: пересчитаем, только если изменился `responses`
 
   // =========================
   // Отправка комментария и рейтинга руководителя
+  // Обработчик кнопки «Сохранить итог»
   // =========================
   const handleSubmit = () => {
+    // Показываем alert с введёнными данными
     alert(`Комментарий руководителя: ${managerComment}\nРейтинг: ${managerRating}`);
-    // Здесь можно отправить данные на сервер
+    // Здесь можно добавить логику отправки данных на сервер (API-запрос)
   };
 
   return (
@@ -77,47 +87,49 @@ const ResultsPage = ({ responses }) => {
 
       {/* =========================
           Карточки с результатами
+          Отображают итоговые данные: балл, рейтинг и рекомендацию
       ========================= */}
       <div className={styles.cards}>
         <div className={styles.card}>
           <h2>Суммарный балл</h2>
-          <p>{totalScore}</p>
+          <p>{totalScore}</p> {/* Выводим общий набранный балл */}
         </div>
 
         <div className={styles.card}>
           <h2>Рейтинг</h2>
-          <p>{rating}</p>
+          <p>{rating}</p> {/* Выводим определённый рейтинг (Высокий/Средний/Низкий) */}
         </div>
 
         <div className={styles.card}>
           <h2>Рекомендации</h2>
-          <p>{recommendation}</p>
+          <p>{recommendation}</p> {/* Выводим текстовую рекомендацию */}
         </div>
       </div>
 
       {/* =========================
           Раздел для комментария и оценки от руководителя
+          Позволяет ввести комментарий и выставить рейтинг (0–10)
       ========================= */}
       <div className={styles.managerSection}>
         <h2>Комментарий руководителя</h2>
         <textarea
-          value={managerComment}
-          onChange={(e) => setManagerComment(e.target.value)}
-          placeholder="Введите комментарий..."
+          value={managerComment} // текущее значение из состояния
+          onChange={(e) => setManagerComment(e.target.value)} // обновляем состояние при вводе
+          placeholder="Введите комментарий..." // подсказка для пользователя
         />
 
         <label>
           Рейтинг руководителя (0-10):
           <input
-            type="number"
-            min="0"
-            max="10"
-            value={managerRating}
-            onChange={(e) => setManagerRating(Number(e.target.value))}
+            type="number" // поле для ввода числа
+            min="0" // минимальное значение — 0
+            max="10" // максимальное значение — 10
+            value={managerRating} // текущее значение из состояния
+            onChange={(e) => setManagerRating(Number(e.target.value))} // преобразуем в число и обновляем состояние
           />
         </label>
 
-        <button onClick={handleSubmit}>Сохранить итог</button>
+        <button onClick={handleSubmit}>Сохранить итог</button> {/* Кнопка для отправки данных */}
       </div>
     </div>
   );

@@ -38,7 +38,7 @@ const Navbar = () => {
 
   return (
     <div className={styles.navbar}>
-<<<<<<< HEAD
+
       {/* =========================
           ЛОГОТИП
           ========================= */}

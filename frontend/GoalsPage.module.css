@@ -1,0 +1,128 @@
+/* =========================
+   КОНТЕЙНЕР СТРАНИЦЫ
+   ========================= */
+   *{
+    background-color: #2a2a2a;
+    margin: 0;
+    padding: 0;
+   }
+
+.container {
+  min-height: 100vh; /* на всю высоту окна */
+  max-width: 1200px; /* максимальная ширина страницы */
+  margin: 20px auto; /* центрируем по горизонтали */
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #1e1e1e; /* тёмный фон */
+  color: #eee; /* светлый основной текст */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Заголовок страницы */
+h1 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Примечание под заголовком */
+.note {
+  text-align: center;
+  color: #aaa; /* слегка светлый серый */
+  margin-bottom: 20px;
+}
+
+/* =========================
+   БЛОК ЦЕЛИ
+   ========================= */
+.goalBlock {
+  border: 1px solid #333; /* тёмная рамка */
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: #2a2a2a; /* чуть светлее фона страницы */
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+/* Анимация появления и удаления цели */
+.goalBlock.adding { 
+  opacity: 0; 
+  transform: translateY(-20px); 
+}
+.goalBlock.removing { 
+  opacity: 0; 
+  transform: translateY(-20px); 
+}
+
+/* =========================
+   ШАПКА ЦЕЛИ
+   ========================= */
+.goalHeader { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  margin-bottom: 10px; 
+}
+
+/* Поле ввода названия цели */
+.goalNameInput {
+  flex-grow: 1;
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #555;
+  margin-right: 10px;
+  background-color: #3a3a3a; /* тёмный фон поля */
+  color: #eee; /* светлый текст */
+}
+
+/* =========================
+   TEXTAREA ДЛЯ СРОКОВ И РЕЗУЛЬТАТОВ
+   ========================= */
+textarea {
+  width: 100%;
+  min-height: 60px;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  border: 1px solid #555;
+  resize: vertical;
+  font-size: 14px;
+  background-color: #3a3a3a;
+  color: #eee;
+}
+
+/* =========================
+   СТРОКА ЗАДАЧИ
+   ========================= */
+.taskRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.taskRow.adding { opacity: 0; transform: translateY(-20px); }
+.taskRow.removing { opacity: 0; transform: translateY(-20px); }
+
+.taskRow span {
+  width: 70px;
+  font-weight: bold;
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+
+.addGoalBtn {
+  margin-top: 5px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  background-color: blue;
+  color: #f5f5f5;
+}

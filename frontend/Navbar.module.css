@@ -1,0 +1,133 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 64px;
+  background-color: #141414; /* тёмный фон */
+  color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+/* Логотип */
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logoText {
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 10px;
+  color: #fff;
+}
+
+/* Меню */
+.menu {
+  flex: 1;
+  margin: 0 20px;
+}
+
+/* Принудительно делаем меню тёмным */
+:global(.ant-menu) {
+  background-color: #141414 !important;
+  color: #fff !important;
+  border-bottom: none !important;
+}
+
+:global(.ant-menu-item) {
+  color: #ccc !important;
+}
+
+:global(.ant-menu-item:hover) {
+  background-color: #1f1f1f !important;
+  color: #fff !important;
+}
+
+:global(.ant-menu-item-selected) {
+  background-color: #333 !important;
+  color: #fff !important;
+}
+
+/* ===================== Секция пользователя ===================== */
+
+.userSection span {
+  color: #fff !important;
+}
+/* Селектор роли */
+
+:global(.roleSelect .ant-select-selector) {
+  background-color: #333 !important;
+  color: #fff !important;
+  border: 1px solid #555 !important;
+  box-shadow: none !important;
+  width: 160px !important; 
+}
+
+/* Текст выбранного элемента */
+:global(.roleSelect .ant-select-selection-item) {
+  color: #fff !important;
+}
+
+/* Placeholder */
+:global(.roleSelect .ant-select-selection-placeholder) {
+  color: #aaa !important;
+}
+
+/* Стрелка */
+:global(.roleSelect .ant-select-arrow) {
+  color: #fff !important;
+}
+
+/* Dropdown (портал) */
+:global(.ant-select-dropdown) {
+  background-color: #333 !important;
+  color: #fff !important;
+}
+
+/* Элементы dropdown */
+:global(.ant-select-item-option-content) {
+  color: #fff !important;
+}
+
+/* Выбранный / активный элемент */
+:global(.ant-select-item-option-selected),
+:global(.ant-select-item-option-active) {
+  background-color: #555 !important;
+  color: #fff !important;
+}
+
+/* Фокус */
+:global(.roleSelect.ant-select-focused .ant-select-selector) {
+  border-color: #555 !important;
+  box-shadow: none !important;
+}
+
+
+
+/* Скрываем десктопное меню на мобильных */
+@media (max-width: 768px) {
+  .menuWrapper {
+    display: none;
+  }
+
+  .roleSelect {
+    display: none;
+  }
+
+  .userSection Text {
+    display: none;
+  }
+
+  .mobileMenuButton {
+    display: inline-flex;
+    color: #fff;
+    background: none;
+    border: none;
+  }
+}
+
+/* По умолчанию скрыт бургер */
+.mobileMenuButton {
+  display: none;
+}

@@ -1,0 +1,138 @@
+/* src/pages/DashboardPage.module.css */
+
+/* ОСНОВНОЙ КОНТЕЙНЕР 
+   Задаем базовый цвет текста здесь, чтобы убрать лишние .whiteText везде */
+.dashboardPage {
+  background-color: #1f1f1f;
+  min-height: 100vh;
+  padding: 20px;
+  color: white;
+}
+
+/* КАРТОЧКИ (ANT DESIGN Card) */
+.card {
+  background-color: #2a2a2a !important;
+  border: 1px solid #333 !important;
+  border-radius: 10px !important;
+  margin-bottom: 20px;
+}
+
+.card .ant-card-head-title {
+  font-weight: 600;
+}
+
+/* Принудительные цвета для вложенных элементов карточки */
+.card :where(
+  .ant-statistic-title, 
+  .ant-statistic-content,
+  .ant-table-tbody > tr > td
+) {
+  color: inherit !important;
+}
+
+/* МОДАЛЬНОЕ ОКНО */
+:global(.ant-modal-content) {
+  background-color: #2a2a2a !important;
+  color: white !important;
+}
+
+:global(.ant-modal-header) {
+  background-color: #2a2a2a !important;
+  border-bottom: 1px solid #444 !important;
+}
+
+:global(.ant-modal-title),
+:global(.ant-modal-body),
+:global(.ant-modal-close) {
+  color: white !important;
+}
+
+:global(.ant-modal-close:hover) {
+  color: #ccc !important;
+}
+
+/* МАСКА МОДАЛКИ (затемнение фона) */
+:global(.ant-modal-mask) {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(4px);
+}
+
+/* ПРОГРЕСС-БАРЫ (Progress) */
+:global(.ant-progress-inner) {
+  background-color: #555 !important;
+}
+
+:global(.ant-progress-text) {
+  color: white !important;
+}
+
+/* СТАТИСТИКА (Statistic) */
+:global(.ant-statistic-title) {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+:global(.ant-statistic-content) {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* ТАБЛИЦЫ (ANT Design Table) */
+:global(.ant-table-wrapper),
+:global(.ant-table) {
+  background-color: transparent !important;
+  color: white !important;
+}
+
+:global(.ant-table-thead > tr > th) {
+  background-color: #333 !important;
+  border-bottom: 1px solid #444 !important;
+}
+
+:global(.ant-table-tbody > tr > td) {
+  border-bottom: 1px solid #444 !important;
+}
+
+:global(.ant-table-tbody > tr:hover > td),
+.darkTableRow:hover {
+  background-color: #383838 !important;
+}
+
+/* ГРАФИК (Recharts) */
+.recharts-wrapper {
+  background-color: transparent !important;
+}
+
+/* Оси координат */
+:global(.recharts-cartesian-axis-tick text) {
+  fill: white !important;
+}
+
+/* Подсказка Tooltip */
+:global(.recharts-tooltip-wrapper) {
+  color: white !important;
+  background-color: #2a2a2a !important;
+  border: 1px solid #555 !important;
+}
+
+/* Линия графика (точки/dots) - исправлено 'r' на стандартные свойства если нужно влиять через CSS */
+:global(.recharts-line-dot) {
+  stroke-width: 4px !important;
+  /* ВАЖНО: Свойство 'r' управляется из JSX (dot={{ r: 4 }}). 
+     Здесь можно настроить обводку самой точки, если она включена */
+  stroke: #2a2a2a !important; /* Цвет "дырки" внутри точки под линией */
+}
+
+/* СКРОЛЛБАРЫ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #555;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #777;
+}

@@ -1,0 +1,178 @@
+/* =========================
+   Основной контейнер страницы аналитики
+   ========================= */
+.container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  color: #f5f5f5;
+  font-family: 'Arial', sans-serif;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* =========================
+   Заголовок страницы
+   ========================= */
+h1 {
+  text-align: center;
+  /* Уменьшили маржин: объединили верхний отступ с нижним через сокращенную запись */
+  margin: 30px 0 20px; 
+  color: #ffd700;
+  font-weight: bold;
+}
+
+/* =========================
+   Параграфы
+   ========================= */
+p {
+  margin-bottom: 15px;
+  line-height: 1.6;
+  color: #ddd; /* Сделали текст чуть менее контрастным для глаз */
+}
+
+/* Выделение важного текста */
+strong {
+  color: #ffa500;
+}
+
+/* Ссылки внутри рекомендаций (если будут) */
+.recommendations a {
+  color: #1e88e5;
+  text-decoration: underline;
+}
+.recommendations a:hover {
+  color: #4da3f2;
+}
+
+/* =========================
+   Блок детальных рекомендаций
+   ========================= */
+.recommendations {
+  background-color: #2a2a2a;
+  padding: 20px; /* Чуть увеличили паддинг для воздуха */
+  border-radius: 8px;
+  border: 1px dashed #555;
+  margin-top: 30px; /* Добавили отступ сверху от карточек */
+}
+
+/* Заголовок блока рекомендаций */
+.recommendations h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #ffd700;
+  font-size: 1.3em;
+}
+
+/* Список точек развития */
+.recommendations ul {
+  padding-left: 20px;
+  color: #bbb;
+}
+.recommendations li {
+  margin-bottom: 8px;
+}
+
+/* =========================
+   Контейнер карточек с итогами
+   ========================= */
+.cardContainer {
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+/* Карточки с суммарным баллом и рейтингом */
+.card {
+  background-color: #2a2a2a;
+  padding: 30px; /* Немного уменьшили внутренние отступы */
+  border-radius: 10px;
+  border: 1px solid #555;
+  flex: 1 1 250px;
+  min-width: 250px;
+  text-align: center;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Анимация "подъема" при наведении */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* Небольшой блеск для карточки (визуальное улучшение) */
+.card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+  transform: rotate(60deg);
+  pointer-events: none;
+}
+.card:hover::before {
+  top: 150%;
+  transition: top 0.5s;
+}
+
+/* Заголовок внутри карточки */
+.card h2 {
+  margin-bottom: 10px;
+  color: #ffd700;
+  font-size: 1.1em;
+  letter-spacing: 0.5px;
+}
+
+/* Текст значения внутри карточки */
+.card p {
+  font-size: 2em; /* Увеличили размер цифр — это самое важное на странице */
+  font-weight: bold;
+  margin: 0;
+  color: #fff;
+}
+
+/* Для рейтинга сделаем цвет динамическим через JS инлайн-стиль,
+   но зададим здесь базовый smooth переход */
+.card[style] p {
+  transition: color 0.3s ease;
+}
+
+/* =========================
+   Адаптивность для маленьких экранов
+   ========================= */
+@media (max-width: 600px) {
+  .container {
+    padding: 15px;
+    margin: 10px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+    margin: 20px 0 15px;
+  }
+
+  p {
+    font-size: 0.95em;
+  }
+
+  .card {
+    flex: 1 1 100%;
+    padding: 25px;
+  }
+  
+  .card p {
+    font-size: 1.6em;
+  }
+
+  .cardContainer {
+    gap: 30px;
+    margin-bottom: 20px;
+  }
+}

@@ -1,0 +1,151 @@
+/* src/components/Navbar.module.css */
+
+.navbar {
+  max-width: 1200px; /* Ширина вашего основного контента */
+  margin: 0 auto;     /* Центрирует блок */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  background-color: #1e1e1e !important;
+  color: white;
+  padding: 0 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* БЛОК МЕНЮ */
+.menuWrapper {
+ 
+  max-width: 1200px;
+  margin-left: 40px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.menuContainer {
+  width: 100%;
+}
+
+/* САМОЕ ВАЖНОЕ: 
+   Используем класс .menu из модуля, чтобы перебить цвета без :global 
+*/
+.menu {
+  background: transparent !important;
+  border: none !important;
+  width: 100%;
+  
+  /* Принудительно красим пункты меню нашего класса в белый */
+  .ant-menu-item > a,
+  .ant-menu-submenu-title > a {
+    color: white !important;
+  }
+  .ant-menu-item:hover,
+  .ant-menu-submenu:hover {
+    color: #ccc !important;
+  }
+  .ant-menu-item-selected {
+    background-color: #333 !important;
+    color: white !important;
+    border-bottom: 2px solid #ffd700 !important;
+  }
+  .ant-menu-item-selected > a {
+    color: #ffd700 !important;
+  }
+}
+
+/* СЕЛЕКТОР РОЛИ */
+.roleSelect {
+  width: 160px;
+  margin-left: 10px;
+}
+.roleSelect .ant-select-selector {
+  background-color: #333 !important;
+  border: 1px solid #555 !important;
+  color: white !important;
+  height: 32px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+.roleSelect .ant-select-selection-item {
+  display: flex !important;
+  align-items: center !important;
+  line-height: 1 !important;
+  min-height: 30px !important;
+  padding-top: 2px !important;
+  color: white !important;
+}
+
+/* Выпадающий список селекта */
+.dropdownFix .ant-select-dropdown {
+  background-color: #333 !important;
+}
+.dropdownFix .ant-select-item {
+  color: white !important;
+}
+.dropdownFix .ant-select-item-option-selected {
+  background-color: #555 !important;
+  color: white !important;
+}
+.dropdownFix .ant-select-item-option-active {
+  background-color: #444 !important;
+  color: white !important;
+}
+
+/* ЮЗЕР СЕКШН */
+.userSection {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-width: 250px;
+  justify-content: flex-end;
+}
+.username {
+  color: #ddd;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* КНОПКИ */
+.removeBtn, .mobileMenuButton {
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+.removeBtn {
+  background-color: #e53935;
+  color: white;
+}
+.mobileMenuButton {
+  display: none; /* По умолчанию скрыт */
+  background: none;
+  color: white;
+  font-size: 18px;
+  border: none;
+}
+
+/* АДАПТИВНОСТЬ */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 15px;
+  }
+  .menuWrapper {
+    display: none;
+  }
+  .username {
+    display: none;
+  }
+  .roleSelect {
+    display: none;
+  }
+  .mobileMenuButton {
+    display: block; /* Появляется только здесь */
+  }
+}

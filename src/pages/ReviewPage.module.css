@@ -1,0 +1,163 @@
+/* src/pages/ReviewPage.module.css */
+
+/* КОНТЕЙНЕР СТРАНИЦЫ */
+.pageContainer {
+  min-height: 100vh;
+  padding: 0 20px;
+  background-color: #1f1f1f;
+  color: white;
+  font-family: Arial, sans-serif;
+  transition: padding 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .pageContainer {
+    padding: 0 40px;
+  }
+}
+
+/* Заголовок страницы */
+.pageTitle {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* СЕКЦИИ ФОРМ */
+.section {
+  margin-bottom: 15px;
+  border: 1px solid #333;
+  border-radius: 8px;
+  background-color: #2a2a2a;
+  overflow: hidden;
+}
+
+/* Кнопка-тогглер */
+.toggleBtn {
+  width: 100%;
+  text-align: left;
+  padding: 15px 20px;
+  background-color: #333;
+  color: white;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.2s ease;
+  font-weight: 500;
+}
+
+.toggleBtn:hover {
+  background-color: #444;
+}
+
+/* Иконка стрелки */
+.toggleBtn span {
+  transition: transform 0.3s ease;
+}
+
+/* Поворот иконки при открытии 
+   Теперь применяется к родительскому блоку SECTION */
+.expanded .toggleBtn span {
+  transform: rotate(180deg);
+}
+
+/* КОНТЕНТ СЕКЦИИ (Исправленная анимация) */
+.sectionContent {
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sectionContent > div {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.sectionContent.open {
+  grid-template-rows: 1fr;
+}
+
+/* ЦЕЛИ СОТРУДНИКА */
+.employeeGoals {
+  margin-top: 20px;
+  padding: 0 15px 15px;
+}
+
+.employeeGoals h3 {
+  margin-bottom: 15px;
+  color: #ffd700;
+  font-size: 18px;
+}
+
+.goalWithDeadline {
+  position: relative;
+  padding-right: 120px;
+  margin-bottom: 15px;
+}
+
+.daysLeft {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+/* Добавлены модификаторы состояния для DaysLeft */
+.daysLeft.deadline-ok {
+  background-color: rgba(76, 175, 80, 0.2);
+  color: #4caf50;
+}
+
+.daysLeft.deadline-expired {
+  background-color: rgba(244, 67, 54, 0.2);
+  color: #f44336;
+}
+
+/* SELECT (AntD) */
+:global(.ant-select),
+:global(.ant-select-selector),
+:global(.ant-select-selection-item),
+:global(.ant-select-item-option) {
+  background-color: #333 !important;
+  color: white !important;
+  border-color: #555 !important;
+}
+
+:global(.ant-select-item-option-active),
+:global(.ant-select-item-option-selected) {
+  background-color: #555 !important;
+  color: white !important;
+}
+
+:global(.ant-select-arrow) {
+  color: #ccc !important;
+}
+
+/* АВАТАР И ТЕКСТ РОЛИ */
+.userSection {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+}
+
+.userSection .ant-avatar {
+  background-color: #555;
+  color: #fff;
+}
+
+.userSection span {
+  color: #ddd;
+  margin-left: 8px;
+  font-size: 14px;
+}

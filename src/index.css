@@ -1,0 +1,122 @@
+/* src/index.css */
+
+/* ==========================
+   1. ГЛОБАЛЬНАЯ ТЕМА ANT DESIGN (Принудительная)
+   Эти правила перекрывают ВСТРОЕННЫЕ стили antd.css
+   ========================== */
+:global {
+  /* Основные кнопки (Добавить цель) */
+  .ant-btn-primary {
+    background-color: #1e88e5 !important;
+    border-color: #1e88e5 !important;
+    color: white !important;
+  }
+  .ant-btn-primary:hover,
+  .ant-btn-primary:focus {
+    background-color: #40a9ff !important;
+    border-color: #40a9ff !important;
+    color: white !important;
+  }
+
+  /* Кнопки удаления (Опасные действия) */
+  .ant-btn-danger {
+    background-color: #e53935 !important;
+    border-color: #e53935 !important;
+    color: white !important;
+  }
+  .ant-btn-danger:hover,
+  .ant-btn-danger:focus {
+    background-color: #f76b6b !important;
+    border-color: #f76b6b !important;
+    color: white !important;
+  }
+
+  /* Обычные серые кнопки (по умолчанию) */
+  .ant-btn {
+    background-color: #333 !important;
+    border-color: #555 !important;
+    color: white !important;
+  }
+  .ant-btn:hover {
+    background-color: #444 !important;
+    border-color: #666 !important;
+    color: white !important;
+  }
+
+  /* Иконки внутри кнопок (чтобы были белыми) */
+  .ant-btn > .anticon {
+    color: inherit !important; /* Наследует цвет текста кнопки */
+  }
+}
+
+/* ==========================
+   2. ВАШИ ОБЫЧНЫЕ СТИЛИ САЙТА
+   ========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #1f1f1f;
+  color: #eee;
+}
+
+.container {
+  min-height: 100vh;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #1e1e1e;
+  color: #eee;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.note {
+  text-align: center;
+  color: #aaa;
+  margin-bottom: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: white;
+}
+
+/* ИНПУТЫ */
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  border: 1px solid #555;
+  font-size: 14px;
+  background-color: #3a3a3a;
+  color: #eee;
+}
+input[type="text"] { min-height: 40px; }
+textarea { min-height: 60px; resize: vertical; }
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #ffd700;
+  box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
+}
+
+/* ВАШИ КЛАССЫ ДЛЯ НАВБАРА (если вы используете их где-то еще) */
+.addGoalBtn, .addTaskBtn, .removeBtn {
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  color: #f5f5f5;
+  font-weight: bold;
+}
+.addGoalBtn { background-color: #1e88e5; }
+.addTaskBtn { background-color: #4caf50; }
+.removeBtn { background-color: #e53935; }

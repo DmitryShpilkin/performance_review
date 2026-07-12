@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/performance_review/static/css/main.beb72072.css",
+    "main.js": "/performance_review/static/js/main.9026971f.js",
+    "index.html": "/performance_review/index.html",
+    "main.beb72072.css.map": "/performance_review/static/css/main.beb72072.css.map",
+    "main.9026971f.js.map": "/performance_review/static/js/main.9026971f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.beb72072.css",
+    "static/js/main.9026971f.js"
+  ]
+}
